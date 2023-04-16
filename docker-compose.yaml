@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  test-task-gen1-srv:
+    container_name: test-task-gen1-srv
+    build:
+      dockerfile: Dockerfile
+      context: .
+    command: [ "python", "solution/channel/fastapi/main.py"]
+    ports:
+      - 6776:6776
+    networks:
+      - test-task-network
+
+  test-task-mongodb:
+    container_name: test-task-mongodb
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo_db:/data/db
+    networks:
+      - test-task-network
+
+networks:
+  test-task-network:

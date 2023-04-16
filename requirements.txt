@@ -1,0 +1,4 @@
+fastapi[all]==0.95.1
+pydantic==1.10.7
+uvicorn==0.21.1
+motor==3.1.2
